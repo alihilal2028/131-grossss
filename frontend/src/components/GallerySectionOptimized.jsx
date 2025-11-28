@@ -133,7 +133,7 @@ const GallerySectionOptimized = () => {
   ];
 
   const getFilteredImages = () => {
-    if (activeCategory === 'all') return allImages.slice(0, 12);
+    if (activeCategory === 'all') return allImages;
     return propertyImages[activeCategory] || [];
   };
 
