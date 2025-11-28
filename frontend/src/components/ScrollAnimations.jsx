@@ -19,7 +19,7 @@ export const ParallaxSection = ({ children, speed = 0.5, className = '' }) => {
   );
 };
 
-// Fade in on scroll
+// Fade in on scroll - using whileInView for reliability
 export const FadeInOnScroll = ({ 
   children, 
   delay = 0, 
@@ -28,12 +28,6 @@ export const FadeInOnScroll = ({
   distance = 60,
   className = '' 
 }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 0.9', 'start 0.4']
-  });
-
   const directions = {
     up: { x: 0, y: distance },
     down: { x: 0, y: -distance },
@@ -41,18 +35,24 @@ export const FadeInOnScroll = ({
     right: { x: -distance, y: 0 },
   };
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const x = useTransform(scrollYProgress, [0, 1], [directions[direction].x, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [directions[direction].y, 0]);
-
-  const smoothOpacity = useSpring(opacity, { damping: 30, stiffness: 100 });
-  const smoothX = useSpring(x, { damping: 30, stiffness: 100 });
-  const smoothY = useSpring(y, { damping: 30, stiffness: 100 });
-
   return (
     <motion.div
-      ref={ref}
-      style={{ opacity: smoothOpacity, x: smoothX, y: smoothY }}
+      initial={{ 
+        opacity: 0, 
+        x: directions[direction].x, 
+        y: directions[direction].y 
+      }}
+      whileInView={{ 
+        opacity: 1, 
+        x: 0, 
+        y: 0 
+      }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ 
+        duration, 
+        delay,
+        ease: [0.23, 1, 0.32, 1]
+      }}
       className={className}
     >
       {children}
