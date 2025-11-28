@@ -45,6 +45,11 @@ const NavbarEnhanced = () => {
     setMobileMenuOpen(false);
   };
 
+  const handleBooking = () => {
+    window.open('https://www.realtor.ca/real-estate/29133848/131-grosvenor-avenue-burnaby', '_blank');
+    setMobileMenuOpen(false);
+  };
+
   return (
     <>
       <motion.nav
