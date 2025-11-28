@@ -503,6 +503,67 @@ const ContactSectionEnhanced = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Location Highlights - 3D Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-20"
+          style={{ perspective: '2000px' }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: '🏔️',
+                title: 'Mountain Views',
+                description: 'North Shore panoramic vistas'
+              },
+              {
+                icon: '🌆',
+                title: 'City Center',
+                description: 'Downtown Vancouver skyline'
+              },
+              {
+                icon: '🏡',
+                title: 'Capitol Hill',
+                description: 'Prestigious neighborhood'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30, rotateX: 20, z: -100 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: 0.5 + index * 0.15,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                whileHover={{ 
+                  y: -10, 
+                  z: 80,
+                  rotateX: -5,
+                  boxShadow: '0 25px 50px rgba(201,162,39,0.2)'
+                }}
+                viewport={{ once: true }}
+                style={{ transformStyle: 'preserve-3d' }}
+                className="glass-card p-6 text-center cursor-pointer group"
+              >
+                <motion.div
+                  className="text-5xl mb-4"
+                  whileHover={{ scale: 1.2, rotateZ: 10 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ translateZ: 30 }}
+                >
+                  {item.icon}
+                </motion.div>
+                <h4 className="text-ivory font-playfair text-lg mb-2">{item.title}</h4>
+                <p className="text-white/50 text-sm">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
