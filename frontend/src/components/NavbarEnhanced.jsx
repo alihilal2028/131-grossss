@@ -207,8 +207,8 @@ const NavbarEnhanced = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ delay: 0.4, duration: 0.4 }}
-                onClick={() => scrollToSection('#contact')}
-                className="mt-4 px-10 py-4 bg-gold text-charcoal text-lg tracking-wider uppercase"
+                onClick={handleBooking}
+                className="mt-4 px-10 py-4 bg-gold text-charcoal text-lg tracking-wider uppercase cursor-pointer"
               >
                 Book Viewing
               </motion.button>
