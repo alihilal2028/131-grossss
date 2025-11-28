@@ -185,19 +185,26 @@ const PropertyDetailsEnhanced = () => {
             </motion.div>
           </div>
 
-          {/* Right Side - Sticky Facts Card */}
-          <div className="lg:col-span-2">
+          {/* Right Side - Sticky Facts Card with 3D */}
+          <div className="lg:col-span-2" style={{ perspective: '1500px' }}>
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, y: 50, rotateY: 15, z: -100 }}
+              whileInView={{ opacity: 1, y: 0, rotateY: 0, z: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
               className="lg:sticky lg:top-28"
+              style={{ transformStyle: 'preserve-3d' }}
             >
               <motion.div 
-                className="glass-card p-8 border-gold/20 relative overflow-hidden"
-                whileHover={{ boxShadow: '0 0 80px rgba(201,162,39,0.15)' }}
+                className="glass-card p-8 border-gold/20 relative overflow-visible"
+                whileHover={{ 
+                  boxShadow: '0 25px 80px rgba(201,162,39,0.25)',
+                  z: 50,
+                  rotateY: -2,
+                  scale: 1.02
+                }}
                 transition={{ duration: 0.5 }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Animated corner accents */}
                 <motion.div
