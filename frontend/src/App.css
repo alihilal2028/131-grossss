@@ -423,3 +423,25 @@ a {
 canvas {
   display: block;
 }
+
+/* =============================================
+   REMOVE ALL WATERMARKS AND BADGES
+   ============================================= */
+#emergent-badge,
+a[href*="emergent"],
+a[href*="Emergent"],
+[id*="emergent"],
+[class*="emergent"],
+div[style*="Made with"],
+div[style*="made with"],
+a[style*="position: fixed"][style*="bottom"],
+a[target="_blank"][href*="utm_source=emergent-badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+}
