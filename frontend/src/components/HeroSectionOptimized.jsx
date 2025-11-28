@@ -57,14 +57,12 @@ const HeroSectionOptimized = () => {
         }} />
       </div>
       
-      {/* Content with 3D Depth */}
+      {/* Content - Optimized */}
       <motion.div 
         className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32"
         style={{ 
           opacity: heroOpacity, 
-          y: heroY,
-          perspective: '1200px',
-          transformStyle: 'preserve-3d'
+          y: heroY
         }}
       >
         <div className="text-center">
