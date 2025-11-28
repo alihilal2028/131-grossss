@@ -96,10 +96,10 @@ const AboutSectionEnhanced = () => {
           />
         </FadeIn>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image Side with parallax and tilt */}
-          <FadeInOnScroll direction="left" className="relative">
-            <TiltCard className="relative aspect-[4/5] overflow-hidden perspective-1000">
+        <div className="grid lg:grid-cols-2 gap-16 items-center" style={{ perspective: '2000px' }}>
+          {/* Image Side with 3D parallax and tilt */}
+          <FadeInOnScroll direction="left" className="relative" style={{ transformStyle: 'preserve-3d' }}>
+            <TiltCard className="relative aspect-[4/5] overflow-hidden" style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}>
               <motion.div 
                 className="absolute inset-0"
                 style={{ scale: imageScale }}
