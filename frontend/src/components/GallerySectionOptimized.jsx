@@ -121,6 +121,7 @@ const GallerySectionOptimized = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [showAllPhotos, setShowAllPhotos] = useState(false);
 
   const categories = [
     { key: 'all', label: 'All' },
@@ -133,7 +134,9 @@ const GallerySectionOptimized = () => {
   ];
 
   const getFilteredImages = () => {
-    if (activeCategory === 'all') return allImages;
+    if (activeCategory === 'all') {
+      return showAllPhotos ? allImages : allImages.slice(0, 12);
+    }
     return propertyImages[activeCategory] || [];
   };
 
