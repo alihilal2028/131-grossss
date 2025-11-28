@@ -413,15 +413,8 @@ section {
    LINK STYLES
    ============================================= */
 a {
-  cursor: none;
   text-decoration: none;
   transition: color 0.3s ease;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  a {
-    cursor: pointer;
-  }
 }
 
 /* =============================================
