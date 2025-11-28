@@ -103,13 +103,18 @@ const FeatureCategory = ({ category, features, index }) => (
         <motion.li
           key={i}
           variants={featureItemVariants}
-          viewport={{ once: true }}
-          whileHover={{ x: 8 }}
+          whileHover={{ 
+            x: 8,
+            transition: { type: "spring", stiffness: 400, damping: 25 }
+          }}
           className="text-white/60 text-sm flex items-center gap-2 group cursor-default"
         >
           <motion.span 
             className="w-1 h-1 bg-gold rounded-full"
-            whileHover={{ scale: 2 }}
+            whileHover={{ 
+              scale: 2,
+              transition: { type: "spring", stiffness: 500, damping: 15 }
+            }}
           />
           <span className="group-hover:text-white transition-colors">{feature}</span>
         </motion.li>
