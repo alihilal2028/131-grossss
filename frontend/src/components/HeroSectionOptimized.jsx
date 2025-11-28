@@ -42,8 +42,9 @@ const HeroSectionOptimized = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://customer-assets.emergentagent.com/job_e55041c4-a02d-49a5-9e45-335dbf008023/artifacts/dqu7yl9h_official%20exterior.png)',
-            transform: 'scale(1.1)'
+            backgroundImage: 'url(https://customer-assets.emergentagent.com/job_image-showcase-71/artifacts/gg7w7vuh_Gemini_Generated_Image_qh7cwcqh7cwcqh7c.png)',
+            transform: 'scale(1.1)',
+            imageRendering: 'high-quality'
           }}
         />
         
