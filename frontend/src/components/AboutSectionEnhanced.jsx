@@ -150,12 +150,16 @@ const AboutSectionEnhanced = () => {
 
           {/* Content Side */}
           <div>
-            {/* Feature Icons with sequential left-to-right fade-in */}
+            {/* Feature Icons with 3D sequential animation */}
             <motion.div 
               className="flex gap-6 mb-8"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              style={{ 
+                perspective: '1200px',
+                transformStyle: 'preserve-3d'
+              }}
               variants={{
                 visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
               }}
@@ -164,20 +168,39 @@ const AboutSectionEnhanced = () => {
                 <motion.div
                   key={item.label}
                   variants={{
-                    hidden: { opacity: 0, x: -20, scale: 0.8 },
-                    visible: { opacity: 1, x: 0, scale: 1 }
+                    hidden: { opacity: 0, x: -30, rotateY: -90, z: -100 },
+                    visible: { opacity: 1, x: 0, rotateY: 0, z: 0 }
                   }}
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex flex-col items-center gap-2 cursor-default"
+                  whileHover={{ 
+                    y: -10, 
+                    scale: 1.15,
+                    z: 50,
+                    rotateY: 5,
+                    transition: { duration: 0.3 }
+                  }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformStyle: 'preserve-3d' }}
+                  className="flex flex-col items-center gap-2 cursor-pointer"
                   data-cursor-hover
                 >
                   <motion.div 
-                    className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center"
-                    whileHover={{ borderColor: 'rgba(201,162,39,0.8)', backgroundColor: 'rgba(201,162,39,0.1)' }}
-                    transition={{ duration: 0.3 }}
+                    className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center relative"
+                    whileHover={{ 
+                      borderColor: 'rgba(201,162,39,0.8)', 
+                      backgroundColor: 'rgba(201,162,39,0.1)',
+                      rotateZ: 360,
+                      boxShadow: '0 10px 30px rgba(201,162,39,0.3)'
+                    }}
+                    transition={{ duration: 0.6 }}
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
-                    <item.icon className="w-5 h-5 text-gold" />
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotateY: 180 }}
+                      transition={{ duration: 0.6 }}
+                      style={{ translateZ: 20 }}
+                    >
+                      <item.icon className="w-5 h-5 text-gold" />
+                    </motion.div>
                   </motion.div>
                   <span className="text-xs text-white/50">{item.label}</span>
                 </motion.div>
