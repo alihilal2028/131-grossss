@@ -89,9 +89,8 @@ const PropertyDetailsEnhanced = () => {
     { icon: Receipt, label: 'Taxes', value: propertyData.taxes }
   ];
 
-  const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  const handleBooking = () => {
+    window.open('https://www.realtor.ca/real-estate/29133848/131-grosvenor-avenue-burnaby', '_blank');
   };
 
   return (
