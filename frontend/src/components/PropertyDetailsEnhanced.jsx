@@ -119,7 +119,7 @@ const FeatureCategory = ({ category, features, index }) => (
           <span className="group-hover:text-white transition-colors">{feature}</span>
         </motion.li>
       ))}
-    </ul>
+    </motion.ul>
   </motion.div>
 );
 
