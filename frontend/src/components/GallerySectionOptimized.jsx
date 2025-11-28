@@ -216,19 +216,26 @@ const GallerySectionOptimized = () => {
         </motion.div>
 
         {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <button
-            onClick={() => setActiveCategory('all')}
-            className="px-8 py-3 border border-gold/50 text-gold tracking-wider uppercase hover:bg-gold/10 transition-all duration-300"
+        {activeCategory === 'all' && !showAllPhotos && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mt-12"
           >
-            View All {allImages.length} Photos
-          </button>
-        </motion.div>
+            <motion.button
+              onClick={() => setShowAllPhotos(true)}
+              whileHover={{ 
+                scale: 1.05,
+                transition: { type: "spring", stiffness: 400, damping: 10 }
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-4 border border-gold/50 text-gold tracking-wider uppercase hover:bg-gold/10 transition-all duration-300 font-medium"
+            >
+              View All {allImages.length} Photos
+            </motion.button>
+          </motion.div>
+        )}
       </div>
 
       {/* Lightbox */}
