@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { SmoothScrollProvider } from './context/SmoothScrollContext';
 import NavbarEnhanced from './components/NavbarEnhanced';
 import HeroSectionEnhanced from './components/HeroSectionEnhanced';
 import AboutSectionEnhanced from './components/AboutSectionEnhanced';
