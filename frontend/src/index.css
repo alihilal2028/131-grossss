@@ -161,3 +161,24 @@ a[target="_blank"][href*="emergent.sh"] {
   z-index: -9999 !important;
   overflow: hidden !important;
 }
+
+/* PERFORMANCE OPTIMIZATIONS */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* GPU acceleration for smooth animations */
+img, 
+video,
+.glass-card,
+[class*="motion"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize repaints */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
