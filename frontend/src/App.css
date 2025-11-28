@@ -1,6 +1,7 @@
 /* =============================================
    131 GROSVENOR AVENUE - LUXURY REAL ESTATE
    Cinematic Property Website Styles
+   Hand-crafted for $20k+ agency quality
    ============================================= */
 
 /* Import Playfair Display & Inter fonts */
@@ -46,6 +47,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  cursor: none;
+}
+
+/* Show default cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
 }
 
 /* Remove default App centering */
@@ -63,7 +72,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 /* =============================================
@@ -97,16 +106,19 @@ h1, h2, h3, h4, h5, h6 {
    GLASSMORPHISM CARDS
    ============================================= */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.4s ease;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(201, 162, 39, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(201, 162, 39, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(201, 162, 39, 0.1);
 }
 
 /* =============================================
@@ -114,9 +126,15 @@ h1, h2, h3, h4, h5, h6 {
    ============================================= */
 button {
   font-family: var(--font-body);
-  cursor: pointer;
+  cursor: none;
   border: none;
   outline: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button {
+    cursor: pointer;
+  }
 }
 
 button:focus-visible {
@@ -124,7 +142,7 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* Gold CTA Button */
+/* Gold CTA Button with luxury glow */
 .btn-gold {
   background-color: var(--gold);
   color: var(--charcoal);
@@ -132,12 +150,29 @@ button:focus-visible {
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.btn-gold:hover::before {
+  transform: translateX(100%);
 }
 
 .btn-gold:hover {
   background-color: var(--gold-light);
-  box-shadow: 0 0 30px rgba(201, 162, 39, 0.3);
+  box-shadow: 
+    0 0 40px rgba(201, 162, 39, 0.4),
+    0 0 80px rgba(201, 162, 39, 0.2);
 }
 
 /* Outline Button */
@@ -149,12 +184,29 @@ button:focus-visible {
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: -1;
 }
 
 .btn-outline:hover {
-  background: rgba(201, 162, 39, 0.1);
+  color: var(--charcoal);
   border-color: var(--gold);
+}
+
+.btn-outline:hover::before {
+  transform: scaleX(1);
 }
 
 /* =============================================
@@ -165,7 +217,7 @@ textarea,
 select {
   font-family: var(--font-body);
   font-size: 1rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 input:focus,
@@ -183,10 +235,10 @@ select {
 }
 
 /* =============================================
-   SCROLLBAR
+   SCROLLBAR - Luxury minimal style
    ============================================= */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -194,12 +246,12 @@ select {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(201, 162, 39, 0.3);
-  border-radius: 4px;
+  background: rgba(201, 162, 39, 0.2);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(201, 162, 39, 0.5);
+  background: rgba(201, 162, 39, 0.4);
 }
 
 /* =============================================
@@ -219,7 +271,7 @@ select {
     box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.4);
   }
   50% {
-    box-shadow: 0 0 20px 10px rgba(201, 162, 39, 0);
+    box-shadow: 0 0 30px 15px rgba(201, 162, 39, 0);
   }
 }
 
@@ -230,6 +282,19 @@ select {
   100% {
     background-position: 200% 0;
   }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
 }
 
 .animate-float {
@@ -248,12 +313,13 @@ select {
 }
 
 .gold-glow {
-  box-shadow: 0 0 40px rgba(201, 162, 39, 0.2);
+  box-shadow: 0 0 60px rgba(201, 162, 39, 0.2);
 }
 
 .gold-border-glow {
-  box-shadow: inset 0 0 20px rgba(201, 162, 39, 0.1),
-              0 0 20px rgba(201, 162, 39, 0.1);
+  box-shadow: 
+    inset 0 0 30px rgba(201, 162, 39, 0.1),
+    0 0 30px rgba(201, 162, 39, 0.1);
 }
 
 /* Gradient text */
@@ -262,6 +328,15 @@ select {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Perspective for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
 /* =============================================
@@ -278,11 +353,11 @@ img {
 }
 
 .img-zoom img {
-  transition: transform 0.7s ease;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .img-zoom:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* =============================================
@@ -308,8 +383,8 @@ section {
    ============================================= */
 @media (max-width: 768px) {
   .glass-card {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 }
 
@@ -339,4 +414,26 @@ section {
 ::-moz-selection {
   background: rgba(201, 162, 39, 0.3);
   color: var(--ivory);
+}
+
+/* =============================================
+   LINK STYLES
+   ============================================= */
+a {
+  cursor: none;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  a {
+    cursor: pointer;
+  }
+}
+
+/* =============================================
+   CANVAS OPTIMIZATIONS
+   ============================================= */
+canvas {
+  display: block;
 }
