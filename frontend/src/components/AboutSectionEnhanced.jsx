@@ -108,16 +108,16 @@ const AboutSectionEnhanced = () => {
           {/* Image Side with 3D parallax and tilt */}
           <FadeInOnScroll direction="left" className="relative" style={{ transformStyle: 'preserve-3d' }}>
             <TiltCard className="relative aspect-[4/5] overflow-hidden" style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}>
-              <motion.div 
-                className="absolute inset-0"
-                style={{ scale: imageScale }}
-              >
-                <img
-                  src={propertyImages.living[0].url}
-                  alt={propertyImages.living[0].alt}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
+              {/* Premium Image Reveal */}
+              <motion.img
+                src={propertyImages.living[0].url}
+                alt={propertyImages.living[0].alt}
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.2 }}
+                whileInView={{ scale: 1.0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
               
               {/* Shine effect on hover */}
