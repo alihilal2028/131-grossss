@@ -1,7 +1,7 @@
-# Scrollytelling & Motion UI Enhancements
+# 3D Scrollytelling & Motion UI Enhancements
 
 ## Overview
-This document outlines the high-fidelity scroll-based animations and interactions implemented using Framer Motion. All enhancements preserve the existing visual design and colors, adding only interaction and animation logic.
+This document outlines the **3D depth-enhanced** scroll-based animations and interactions implemented using Framer Motion. All enhancements preserve the existing visual design and colors, adding cinematic 3D depth, perspective transforms, and z-axis animations.
 
 ## Global Utilities
 
