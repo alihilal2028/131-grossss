@@ -197,13 +197,17 @@ const GallerySectionOptimized = () => {
           ))}
         </motion.div>
 
-        {/* Gallery Grid with staggerChildren */}
+        {/* Gallery Grid with 3D staggerChildren */}
         <motion.div
           layout
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={{
             visible: { transition: { staggerChildren: 0.1 } }
+          }}
+          style={{ 
+            perspective: '2000px',
+            transformStyle: 'preserve-3d'
           }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
