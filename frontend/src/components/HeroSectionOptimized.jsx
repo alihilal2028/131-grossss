@@ -103,17 +103,34 @@ const HeroSectionOptimized = () => {
             <div className="h-px w-12 bg-gold" />
           </motion.div>
           
-          {/* Main Title with 3D float */}
-          <motion.h1
-            initial={{ opacity: 0, y: 50, rotateX: 15, z: -100 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformStyle: 'preserve-3d' }}
-            className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ivory leading-tight mb-8"
-          >
-            Capitol Hill's most<br />
-            <span className="text-gold italic">cinematic</span> view residence.
-          </motion.h1>
+          {/* Main Title with Masked Text Effect */}
+          <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ivory leading-tight mb-8 overflow-hidden">
+            <motion.span
+              className="inline-block"
+              initial={{ opacity: 0, y: "100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Capitol Hill's most
+            </motion.span>
+            <br />
+            <motion.span
+              className="text-gold italic inline-block"
+              initial={{ opacity: 0, y: "100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              cinematic
+            </motion.span>
+            <motion.span
+              className="inline-block"
+              initial={{ opacity: 0, y: "100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {' '}view residence.
+            </motion.span>
+          </h1>
           
           {/* Subtitle with depth */}
           <motion.p
