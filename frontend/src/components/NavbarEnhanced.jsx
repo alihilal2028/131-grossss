@@ -118,8 +118,8 @@ const NavbarEnhanced = () => {
               ))}
               
               <MagneticButton
-                onClick={() => scrollToSection('#contact')}
-                className="ml-4 px-6 py-2.5 bg-transparent border border-gold/50 text-gold text-sm tracking-wider uppercase hover:bg-gold/10 transition-all duration-300 relative overflow-hidden group"
+                onClick={handleBooking}
+                className="ml-4 px-6 py-2.5 bg-transparent border border-gold/50 text-gold text-sm tracking-wider uppercase hover:bg-gold/10 transition-all duration-300 relative overflow-hidden group cursor-pointer"
                 strength={0.15}
               >
                 <span className="relative z-10">Book Viewing</span>
