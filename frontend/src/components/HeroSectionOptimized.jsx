@@ -134,14 +134,12 @@ const HeroSectionOptimized = () => {
           
           {/* Subtitle with depth */}
           <motion.p
-            initial={{ opacity: 0, y: 30, z: -50 }}
-            animate={{ opacity: 1, y: 0, z: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformStyle: 'preserve-3d', translateZ: 20 }}
             className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
           >
-            Sweeping views of downtown Vancouver, water and North Shore mountains. 
-            {propertyData.beds} beds, {propertyData.baths} baths, {propertyData.sqftFormatted}.
+            Sweeping views of downtown Vancouver, water and North Shore mountains.
           </motion.p>
           
           {/* Magnetic Spring Button */}
