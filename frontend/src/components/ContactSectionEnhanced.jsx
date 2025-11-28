@@ -407,15 +407,100 @@ const ContactSectionEnhanced = () => {
             </motion.div>
           </motion.div>
 
-          {/* Animated Map Pin */}
+          {/* Interactive Map with 3D */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            initial={{ opacity: 0, x: 50, rotateY: -15, z: -100 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0, z: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="relative hidden lg:flex items-center justify-center"
+            style={{ 
+              perspective: '1500px',
+              transformStyle: 'preserve-3d'
+            }}
+            className="relative"
           >
-            <AnimatedMapPin />
+            <motion.div
+              className="relative overflow-hidden rounded-lg border border-gold/20 shadow-2xl"
+              whileHover={{ 
+                scale: 1.02, 
+                z: 50,
+                rotateY: 2,
+                boxShadow: '0 30px 60px rgba(201,162,39,0.2)'
+              }}
+              transition={{ duration: 0.5 }}
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              {/* Google Maps Embed */}
+              <div className="relative w-full h-[500px] bg-charcoal-light">
+                <iframe
+                  title="Property Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.0757468!2d-122.9866!3d49.2388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548676c3c3c3c3c3%3A0x0!2s131%20Grosvenor%20Avenue%2C%20Burnaby%2C%20BC!5e0!3m2!1sen!2sca!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="grayscale contrast-125 brightness-90"
+                />
+                
+                {/* Gold overlay gradient */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-gold/5 via-transparent to-gold/10" />
+                
+                {/* Location marker overlay */}
+                <motion.div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ translateZ: 50 }}
+                >
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-gold rounded-full shadow-lg shadow-gold/50 flex items-center justify-center">
+                      <MapPin className="w-6 h-6 text-charcoal" />
+                    </div>
+                    {/* Pulsing ring */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full border-2 border-gold"
+                      animate={{ scale: [1, 2, 2], opacity: [0.5, 0, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                  </div>
+                </motion.div>
+              </div>
+              
+              {/* Address card overlay */}
+              <motion.div
+                className="absolute bottom-4 left-4 right-4 glass-card p-4 border-gold/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                style={{ translateZ: 60 }}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-gold" />
+                  </div>
+                  <div>
+                    <p className="text-ivory font-medium text-sm mb-1">{propertyData.address.street}</p>
+                    <p className="text-white/50 text-xs">{propertyData.address.neighborhood}, {propertyData.address.city}, {propertyData.address.province}</p>
+                    <motion.a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(propertyData.address.full)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold text-xs mt-2 inline-flex items-center gap-1 hover:underline"
+                      whileHover={{ x: 4 }}
+                    >
+                      Get Directions
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
