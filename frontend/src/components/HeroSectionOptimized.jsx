@@ -148,23 +148,40 @@ const HeroSectionOptimized = () => {
           </motion.button>
         </div>
         
-        {/* Stats Row */}
+        {/* Stats Row with 3D Cards */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
+          style={{ perspective: '1500px' }}
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
         >
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="glass-card p-6 text-center group"
+              initial={{ opacity: 0, y: 30, rotateY: -15, z: -100 }}
+              animate={{ opacity: 1, y: 0, rotateY: 0, z: 0 }}
+              transition={{ 
+                duration: 0.7, 
+                delay: 1.3 + index * 0.15,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              whileHover={{ 
+                y: -15, 
+                z: 80,
+                rotateY: 5,
+                rotateX: -5,
+                boxShadow: '0 25px 50px rgba(201,162,39,0.2)'
+              }}
+              style={{ transformStyle: 'preserve-3d' }}
+              className="glass-card p-6 text-center group cursor-pointer"
             >
-              <stat.icon className="w-5 h-5 text-gold mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <motion.div
+                whileHover={{ scale: 1.2, rotateZ: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <stat.icon className="w-5 h-5 text-gold mx-auto mb-3" />
+              </motion.div>
               <p className="font-playfair text-2xl sm:text-3xl text-ivory mb-1">{stat.value}</p>
               <p className="text-xs tracking-widest text-white/50 uppercase">{stat.label}</p>
             </motion.div>
