@@ -168,9 +168,14 @@ const GallerySectionOptimized = () => {
           ))}
         </motion.div>
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid with staggerChildren */}
         <motion.div
           layout
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } }
+          }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
