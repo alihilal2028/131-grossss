@@ -103,11 +103,12 @@ const HeroSectionOptimized = () => {
             <div className="h-px w-12 bg-gold" />
           </motion.div>
           
-          {/* Main Title */}
+          {/* Main Title with 3D float */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            initial={{ opacity: 0, y: 50, rotateX: 15, z: -100 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{ transformStyle: 'preserve-3d' }}
             className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ivory leading-tight mb-8"
           >
             Capitol Hill's most<br />
