@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, ArrowUp } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Linkedin, Youtube, ArrowUp } from 'lucide-react';
 import { propertyData } from '../data/propertyData';
 
 const FooterEnhanced = () => {
