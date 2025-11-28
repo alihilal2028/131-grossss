@@ -34,22 +34,22 @@ const HeroSectionOptimized = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal"
     >
-      {/* 3D Background Image with Layered Parallax */}
-      <div className="absolute inset-0 z-0" style={{ perspective: '1000px' }}>
+      {/* Premium Image Reveal with Parallax */}
+      <div className="absolute inset-0 z-0 overflow-hidden" style={{ perspective: '1000px' }}>
         <motion.div 
           className="absolute inset-0"
           style={{ 
             y: imageY,
-            scale: imageScale,
-            rotateX: imageRotateX,
             transformStyle: 'preserve-3d'
           }}
         >
-          <div 
+          <motion.div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            initial={{ scale: 1.2 }}
+            animate={{ scale: 1.0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             style={{
               backgroundImage: 'url(https://customer-assets.emergentagent.com/job_image-showcase-71/artifacts/gg7w7vuh_Gemini_Generated_Image_qh7cwcqh7cwcqh7c.png)',
-              transform: 'scale(1.1)',
               imageRendering: 'high-quality'
             }}
           />
