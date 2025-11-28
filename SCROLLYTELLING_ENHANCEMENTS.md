@@ -54,26 +54,42 @@ The hero content appears with depth:
   - Shadow: `0 25px 50px rgba(201,162,39,0.2)`
 - **Perspective**: 1500px parent container
 
-### 2. Details Section (`PropertyDetailsEnhanced.jsx`) ⭐ CRITICAL
+### 2. Details Section (`PropertyDetailsEnhanced.jsx`) ⭐ CRITICAL + 3D
 
-#### Sticky Sidebar Pattern
+#### 3D Sticky Sidebar Pattern
 **Implementation**:
 - Container: `grid lg:grid-cols-5 gap-12 items-start`
 - Left Column (3 cols): Scrolls naturally with description content
-- Right Column (2 cols): `sticky top-24` - stays pinned during scroll
+- Right Column (2 cols): **3D floating sticky card**
+  - `sticky top-24`
+  - `perspective: 1500px`
+  - `transformStyle: preserve-3d`
 
-**Result**: As users read the long description on the left, the price card ($3,188,000) and property specs remain visible on screen.
+**3D Price Card**:
+- **Initial**: `y: 50, rotateY: 15, z: -100, opacity: 0`
+- **Final**: `y: 0, rotateY: 0, z: 0, opacity: 1`
+- **Hover**: 
+  - `z: 50, rotateY: -2, scale: 1.02`
+  - Shadow: `0 25px 80px rgba(201,162,39,0.25)`
 
-**Key Classes**:
+**Result**: As users read the long description on the left, the $3,188,000 price card floats in 3D space, responding to hover with depth.
+
+**Key Implementation**:
 ```jsx
 <div className="grid lg:grid-cols-5 gap-12 items-start">
   <div className="lg:col-span-3">
     {/* Scrollable description */}
   </div>
-  <div className="lg:col-span-2">
-    <div className="lg:sticky lg:top-28">
-      {/* Sticky price card */}
-    </div>
+  <div className="lg:col-span-2" style={{ perspective: '1500px' }}>
+    <motion.div 
+      className="lg:sticky lg:top-28"
+      initial={{ y: 50, rotateY: 15, z: -100 }}
+      animate={{ y: 0, rotateY: 0, z: 0 }}
+      whileHover={{ z: 50, rotateY: -2, scale: 1.02 }}
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      {/* 3D Floating sticky price card */}
+    </motion.div>
   </div>
 </div>
 ```
