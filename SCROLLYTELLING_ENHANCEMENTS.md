@@ -120,29 +120,54 @@ Each gallery card enters with:
 </motion.div>
 ```
 
-### 4. About Section (`AboutSectionEnhanced.jsx`)
+### 4. About Section (`AboutSectionEnhanced.jsx`) ✨
 
-#### Sequential Icon Animation (Left to Right)
-The 4 circular feature icons fade in sequentially:
+#### 3D Sequential Icon Animation (Left to Right)
+The 4 circular feature icons rotate in from depth:
 - **Smart Home** → **View Residence** → **Premium Finishes** → **Climate Control**
-- **Animation**: `opacity: 0, x: -20` → `opacity: 1, x: 0`
+- **Animation**: 
+  - Initial: `x: -30, rotateY: -90, z: -100, opacity: 0`
+  - Final: `x: 0, rotateY: 0, z: 0, opacity: 1`
 - **Stagger**: 0.15s delay between each
-- **Delay**: Starts at 0.2s after section enters viewport
+- **Parent**: `perspective: 1200px`
+
+#### 3D Icon Hover Effects
+- **Card**: 
+  - `y: -10, scale: 1.15, z: 50, rotateY: 5`
+  - Border glow + shadow
+- **Inner Icon**:
+  - `scale: 1.2, rotateY: 180°` (flip animation)
+  - Circle spins 360° with `rotateZ`
+  - `translateZ: 20px` depth
+- **Shadow**: `0 10px 30px rgba(201,162,39,0.3)`
+
+#### 3D Image Container & Floating Card
+- **Container**: `perspective: 2000px`
+- **Floating Stats Card**:
+  - Initial: `x: 50, y: 20, rotateY: -20, z: -100`
+  - Hover: `y: -10, z: 100, rotateY: 5, scale: 1.05`
+  - Shadow: `0 30px 60px rgba(201,162,39,0.3)`
 
 **Implementation**:
 ```jsx
 <motion.div
-  variants={{
-    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
-  }}
+  style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}
+  variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
 >
   {featureIcons.map((item) => (
     <motion.div
       variants={{
-        hidden: { opacity: 0, x: -20, scale: 0.8 },
-        visible: { opacity: 1, x: 0, scale: 1 }
+        hidden: { opacity: 0, x: -30, rotateY: -90, z: -100 },
+        visible: { opacity: 1, x: 0, rotateY: 0, z: 0 }
       }}
-    />
+      whileHover={{ y: -10, scale: 1.15, z: 50, rotateY: 5 }}
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      <motion.div
+        whileHover={{ scale: 1.2, rotateY: 180, rotateZ: 360 }}
+        style={{ translateZ: 20 }}
+      />
+    </motion.div>
   ))}
 </motion.div>
 ```
