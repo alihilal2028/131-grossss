@@ -116,14 +116,21 @@ const AboutSectionEnhanced = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 opacity-0 hover:opacity-100 transition-opacity duration-700" />
             </TiltCard>
             
-            {/* Floating Stats Card */}
+            {/* Floating Stats Card with 3D depth */}
             <motion.div
-              initial={{ opacity: 0, x: 50, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              initial={{ opacity: 0, x: 50, y: 20, rotateY: -20, z: -100 }}
+              whileInView={{ opacity: 1, x: 0, y: 0, rotateY: 0, z: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="absolute -bottom-8 -right-8 glass-card p-6 max-w-xs hidden md:block cursor-default"
+              whileHover={{ 
+                scale: 1.05, 
+                y: -10, 
+                z: 100,
+                rotateY: 5,
+                boxShadow: '0 30px 60px rgba(201,162,39,0.3)'
+              }}
+              style={{ transformStyle: 'preserve-3d' }}
+              className="absolute -bottom-8 -right-8 glass-card p-6 max-w-xs hidden md:block cursor-pointer"
               data-cursor-hover
             >
               <motion.p 
