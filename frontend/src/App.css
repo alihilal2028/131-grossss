@@ -125,15 +125,9 @@ h1, h2, h3, h4, h5, h6 {
    ============================================= */
 button {
   font-family: var(--font-body);
-  cursor: none;
+  cursor: pointer;
   border: none;
   outline: none;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  button {
-    cursor: pointer;
-  }
 }
 
 button:focus-visible {
