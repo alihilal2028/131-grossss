@@ -135,3 +135,29 @@ html {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* FORCEFULLY REMOVE ALL EMERGENT WATERMARKS */
+#emergent-badge,
+a[href*="emergent"],
+a[href*="Emergent"],
+[id*="emergent"],
+[id*="Emergent"],
+[class*="emergent"],
+[class*="Emergent"],
+div[style*="Made with"],
+div[style*="made with"],
+a[style*="position: fixed"][style*="bottom: 20px"],
+a[target="_blank"][href*="utm_source=emergent-badge"],
+a[target="_blank"][href*="emergent.sh"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  z-index: -9999 !important;
+  overflow: hidden !important;
+}
