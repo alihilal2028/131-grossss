@@ -33,8 +33,20 @@ export const propertyData = {
   agent: {
     name: "Adil Dinani PREC*",
     brokerage: "Royal LePage West Real Estate Services",
-    phone: "+1 (604) 555-0123",
-    email: "adil@example.com"
+    phone: "(604) 837-4622",
+    email: "adil@dinani.ca",
+    office: "2185 Austin Ave, Coquitlam, BC",
+    website: "https://www.dinani.ca/",
+    social: {
+      instagram: "https://www.instagram.com/adildinani/",
+      linkedin: "https://ca.linkedin.com/in/adil-dinani-00034825",
+      youtube: "https://www.youtube.com/@AdilDinaniPREC"
+    },
+    profiles: {
+      royalLePage: "https://www.royallepage.ca/en/agent/british-columbia/coquitlam/adil-dinani/3033/",
+      realtor: "https://www.realtor.ca/agent/1480845/adil-dinani-2185-austin-avenue-coquitlam-british-columbia-v3k3r9",
+      rew: "https://www.rew.ca/agents/1314/adil-a-dinani"
+    }
   },
   
   highlights: [
