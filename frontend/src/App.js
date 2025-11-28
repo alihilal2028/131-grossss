@@ -57,22 +57,20 @@ const PropertyPage = () => {
 function App() {
   return (
     <div className="App">
-      <SmoothScrollProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={
-              <PageTransition>
-                <PropertyPage />
-              </PageTransition>
-            } />
-            <Route path="*" element={
-              <PageTransition>
-                <PropertyPage />
-              </PageTransition>
-            } />
-          </Routes>
-        </BrowserRouter>
-      </SmoothScrollProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <PageTransition>
+              <PropertyPage />
+            </PageTransition>
+          } />
+          <Route path="*" element={
+            <PageTransition>
+              <PropertyPage />
+            </PageTransition>
+          } />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
