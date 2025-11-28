@@ -3,42 +3,38 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { allImages, propertyImages } from '../data/propertyData';
 
-// 3D Gallery Card with depth and hover effects
+// Premium Gallery Card with Framer-style Image Reveal
 const GalleryCard = ({ image, index, onClick }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 50, rotateX: 20, z: -100 }}
-      animate={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
-      exit={{ opacity: 0, scale: 0.95, rotateY: -20 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      exit={{ opacity: 0, scale: 0.95 }}
       transition={{ 
         duration: 0.6, 
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1]
       }}
       whileHover={{ 
-        y: -12, 
-        scale: 1.03,
-        z: 100,
-        rotateX: -3,
-        rotateY: 2,
-        boxShadow: '0 30px 60px rgba(0,0,0,0.5)'
+        y: -8,
+        transition: { type: "spring", stiffness: 400, damping: 25 }
       }}
       onClick={onClick}
-      style={{ 
-        transformStyle: 'preserve-3d',
-        perspective: '1000px'
-      }}
       className="relative aspect-[4/3] overflow-hidden cursor-pointer group"
     >
+      {/* Premium Image Reveal */}
       <motion.img
         src={image.url}
         alt={image.alt}
         className="w-full h-full object-cover"
         loading="lazy"
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.6 }}
-        style={{ transformStyle: 'preserve-3d' }}
+        initial={{ scale: 1.2 }}
+        whileInView={{ scale: 1.0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        whileHover={{ scale: 1.05 }}
       />
       
       {/* 3D Layered overlay */}
