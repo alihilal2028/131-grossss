@@ -40,17 +40,18 @@ const MagneticButton = ({ children, className = '', strength = 0.3, ...props }) 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ 
+        scale: 1.05,
+        transition: { type: "spring", stiffness: 400, damping: 10 }
+      }}
+      whileTap={{ 
+        scale: 0.95,
+        transition: { type: "spring", stiffness: 400, damping: 10 }
+      }}
       className={className}
       {...props}
     >
-      <motion.span
-        className="block"
-        animate={{ scale: isHovered ? 1.05 : 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        {children}
-      </motion.span>
+      {children}
     </motion.button>
   );
 };
