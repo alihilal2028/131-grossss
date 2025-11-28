@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import { Check, Home, Mountain, Sparkles, Thermometer } from 'lucide-react';
 import { FadeInOnScroll, ParallaxSection, TextReveal } from './ScrollAnimations';
+import FadeIn from './FadeIn';
 import { propertyData, propertyImages } from '../data/propertyData';
 
 // 3D tilt card component
