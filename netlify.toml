@@ -1,24 +1,17 @@
-# Netlify Configuration for 131 Grosvenor Avenue Real Estate Website
-
 [build]
-  # Build command
-  command = "cd frontend && yarn install && yarn build"
-  
-  # Directory that contains the deploy-ready HTML files and assets
-  publish = "frontend/build"
-  
-  # Environment variables for build
-  [build.environment]
-    NODE_VERSION = "18"
-    YARN_VERSION = "1.22.19"
-    CI = "false"
+  base = "frontend"
+  command = "yarn install && yarn build"
+  publish = "build"
 
-# Redirect rules for Single Page Application
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
+
+[build.environment]
+  NODE_VERSION = "20"
+  CI = "false"
+  DISABLE_ESLINT_PLUGIN = "true"
 
 # Headers for security and performance
 [[headers]]
