@@ -3,38 +3,33 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { allImages, propertyImages } from '../data/propertyData';
 
-// Premium Gallery Card with Framer-style Image Reveal
+// Optimized Gallery Card
 const GalleryCard = ({ image, index, onClick }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ 
-        duration: 0.6, 
-        delay: index * 0.1,
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.5, 
+        delay: index * 0.05,
+        ease: "easeOut"
       }}
       whileHover={{ 
-        y: -8,
-        transition: { type: "spring", stiffness: 400, damping: 25 }
+        y: -6,
+        transition: { type: "spring", stiffness: 300, damping: 20 }
       }}
       onClick={onClick}
       className="relative aspect-[4/3] overflow-hidden cursor-pointer group"
     >
-      {/* Premium Image Reveal */}
-      <motion.img
+      {/* Optimized Image */}
+      <img
         src={image.url}
         alt={image.alt}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         loading="lazy"
-        initial={{ scale: 1.2 }}
-        whileInView={{ scale: 1.0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        whileHover={{ scale: 1.05 }}
       />
       
       {/* Hover overlay */}
