@@ -138,8 +138,8 @@ const PropertyDetailsEnhanced = () => {
           />
         </FadeInOnScroll>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Left Content - Description */}
+        <div className="grid lg:grid-cols-5 gap-12 items-start">
+          {/* Left Content - Description (Scrolls naturally) */}
           <div className="lg:col-span-3">
             <FadeInOnScroll direction="left">
               <motion.h3 
