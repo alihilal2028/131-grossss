@@ -85,7 +85,7 @@ const ContactSection = () => {
                     <Send className="w-8 h-8 text-gold" />
                   </div>
                   <h3 className="font-playfair text-2xl text-ivory mb-3">Thank You</h3>
-                  <p className="text-white/60">Your inquiry has been received. We'll be in touch shortly.</p>
+                  <p className="text-white/60">Your inquiry has been received. We will be in touch shortly.</p>
                   <button
                     onClick={() => setSubmitted(false)}
                     className="mt-6 text-gold text-sm hover:underline"
