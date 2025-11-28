@@ -12,7 +12,8 @@ const HeroSectionOptimized = () => {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  // Enhanced Parallax: Background moves at 50% speed relative to scroll
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
   const stats = [
     { icon: Bed, value: propertyData.beds, label: 'Bedrooms' },
