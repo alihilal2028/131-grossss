@@ -23,24 +23,36 @@ import FadeIn from './components/FadeIn';
 
 ## Section-Specific Enhancements
 
-### 1. Hero Section (`HeroSectionOptimized.jsx`)
+### 1. Hero Section (`HeroSectionOptimized.jsx`) 🎬
 
-#### Parallax Effect
-- **Background Image**: Moves at 50% speed relative to scroll
-- **Implementation**: `useTransform(scrollYProgress, [0, 1], ['0%', '50%'])`
-- **Effect**: Creates depth and immersion as user scrolls
+#### 3D Layered Parallax Effect
+- **Background Image**: Multi-axis movement with perspective
+  - `translateY`: 50% scroll speed
+  - `scale`: 1 → 1.2 (zoom on scroll)
+  - `rotateX`: 0° → -5° (tilt effect)
+- **Layered Overlays**: Each gradient at different z-depths (20px, 30px, 40px)
+- **Perspective**: 1000px container for depth
 
-#### Staggered Text Entrance
-The hero content appears in sequence:
-1. **Eyebrow** (location): 0.3s delay
-2. **Title** ("Capitol Hill's most cinematic..."): 0.5s delay
-3. **Subtitle** ("Sweeping views..."): 0.7s delay
-4. **CTA Button** ("Book a Private Viewing"): 0.9s delay
+#### 3D Staggered Text Entrance
+The hero content appears with depth:
+1. **Title**: 
+   - Initial: `y: 50, rotateX: 15, z: -100`
+   - Final: `y: 0, rotateX: 0, z: 0`
+   - Easing: Custom cubic-bezier [0.22, 1, 0.36, 1]
+2. **Subtitle**: `translateZ: 20px` for layered depth
+3. **CTA Button**: 
+   - `translateZ: 40px`
+   - Hover: `z: 50, rotateX: -5, scale: 1.05`
+   - Shadow: `0 20px 60px rgba(201,162,39,0.4)`
 
-#### Stats Cards
-- Fade in at 1.1s delay
-- Individual cards stagger with 0.1s increments
-- Hover effect: `y: -5` translation
+#### 3D Stats Cards
+- **Initial**: `rotateY: -15, z: -100`
+- **Animate**: Sequential rotation and depth entrance
+- **Hover**: 
+  - `y: -15, z: 80, rotateY: 5, rotateX: -5`
+  - Icon spins 360° with `rotateZ`
+  - Shadow: `0 25px 50px rgba(201,162,39,0.2)`
+- **Perspective**: 1500px parent container
 
 ### 2. Details Section (`PropertyDetailsEnhanced.jsx`) ⭐ CRITICAL
 
