@@ -78,29 +78,45 @@ The hero content appears with depth:
 </div>
 ```
 
-### 3. Gallery Section (`GallerySectionOptimized.jsx`)
+### 3. Gallery Section (`GallerySectionOptimized.jsx`) 🖼️
 
-#### StaggerChildren for Grid
-- **Parent Container**: Uses `staggerChildren: 0.1`
-- **Effect**: Images appear one by one (not all at once)
-- **Delay**: 0.1s between each image
+#### 3D StaggerChildren Grid
+- **Parent Container**: 
+  - `perspective: 2000px`
+  - `transformStyle: preserve-3d`
+  - `staggerChildren: 0.1`
+- **Effect**: Images fly in one by one from depth
 
-#### Enhanced Hover Effects
-Each gallery card has:
-- **Scale**: `whileHover={{ scale: 1.02 }}`
-- **Translation**: `whileHover={{ y: -6 }}`
-- **Image Zoom**: Inner image scales to 1.05 on hover
-- **Duration**: 0.5s smooth transition
+#### 3D Card Entrance
+Each gallery card enters with:
+- **Initial**: `y: 50, rotateX: 20, z: -100, opacity: 0`
+- **Final**: `y: 0, rotateX: 0, z: 0, opacity: 1`
+- **Duration**: 0.6s with custom easing
+- **Stagger**: 0.1s delay between each
+
+#### 3D Hover Effects
+- **Card Lift**: 
+  - `y: -12, z: 100, scale: 1.03`
+  - `rotateX: -3, rotateY: 2`
+  - Shadow: `0 30px 60px rgba(0,0,0,0.5)`
+- **Image Zoom**: Inner image scales to 1.1 (deeper zoom)
+- **Layered Elements**:
+  - Overlay: `translateZ: 20px`
+  - Border: `translateZ: 30px`
+  - Icon: `translateZ: 50px` + `rotateZ: 90°` on hover
+  - Caption: `translateZ: 40px`
 
 ```jsx
 <motion.div
-  whileHover={{ y: -6, scale: 1.02 }}
-  transition={{ duration: 0.4, delay: index * 0.1 }}
+  initial={{ opacity: 0, y: 50, rotateX: 20, z: -100 }}
+  animate={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
+  whileHover={{ 
+    y: -12, scale: 1.03, z: 100,
+    rotateX: -3, rotateY: 2
+  }}
+  style={{ transformStyle: 'preserve-3d' }}
 >
-  <motion.img
-    whileHover={{ scale: 1.05 }}
-    transition={{ duration: 0.5 }}
-  />
+  {/* Layered content at different z-depths */}
 </motion.div>
 ```
 
