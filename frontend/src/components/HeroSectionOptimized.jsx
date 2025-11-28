@@ -34,48 +34,27 @@ const HeroSectionOptimized = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal"
     >
-      {/* Premium Image Reveal with Parallax */}
-      <div className="absolute inset-0 z-0 overflow-hidden" style={{ perspective: '1000px' }}>
+      {/* Premium Image Reveal with Parallax - Optimized */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div 
-          className="absolute inset-0"
-          style={{ 
-            y: imageY,
-            transformStyle: 'preserve-3d'
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+          initial={{ scale: 1.15 }}
+          animate={{ scale: 1.0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{
+            backgroundImage: 'url(https://customer-assets.emergentagent.com/job_image-showcase-71/artifacts/gg7w7vuh_Gemini_Generated_Image_qh7cwcqh7cwcqh7c.png)',
+            y: imageY
           }}
-        >
-          <motion.div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            initial={{ scale: 1.2 }}
-            animate={{ scale: 1.0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            style={{
-              backgroundImage: 'url(https://customer-assets.emergentagent.com/job_image-showcase-71/artifacts/gg7w7vuh_Gemini_Generated_Image_qh7cwcqh7cwcqh7c.png)',
-              imageRendering: 'high-quality'
-            }}
-          />
-          
-          {/* Layered overlays with different depths */}
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal pointer-events-none" 
-            style={{ 
-              z: useTransform(scrollYProgress, [0, 1], [10, 50]),
-              translateZ: 20
-            }}
-          />
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-r from-charcoal/50 via-transparent to-charcoal/50 pointer-events-none"
-            style={{ translateZ: 30 }}
-          />
-          
-          {/* 3D Vignette */}
-          <motion.div 
-            className="absolute inset-0 pointer-events-none" 
-            style={{
-              background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 100%)',
-              translateZ: 40
-            }}
-          />
-        </motion.div>
+        />
+        
+        {/* Simple overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/50 via-transparent to-charcoal/50 pointer-events-none" />
+        
+        {/* Vignette */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 100%)'
+        }} />
       </div>
       
       {/* Content with 3D Depth */}
