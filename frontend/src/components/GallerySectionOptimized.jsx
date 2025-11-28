@@ -160,8 +160,22 @@ const GallerySectionOptimized = () => {
           className="text-center mb-16"
         >
           <p className="text-gold tracking-[0.3em] text-sm uppercase mb-4">Visual Journey</p>
-          <h2 className="font-playfair text-4xl md:text-5xl text-ivory mb-6">Gallery</h2>
-          <div className="w-24 h-px bg-gold/50 mx-auto" />
+          <h2 className="font-playfair text-4xl md:text-5xl text-ivory mb-6 overflow-hidden">
+            <motion.span
+              className="inline-block"
+              initial={{ y: "100%" }}
+              animate={isInView ? { y: 0 } : { y: "100%" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Gallery
+            </motion.span>
+          </h2>
+          <motion.div 
+            className="w-24 h-px bg-gold/50 mx-auto"
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          />
         </motion.div>
 
         {/* Category Filter */}
