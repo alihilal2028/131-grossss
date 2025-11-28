@@ -1,13 +1,12 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { propertyImages } from '../data/propertyData';
 
 const FloorplanSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  // Using exterior image as placeholder for floorplan
-  const floorplanImage = propertyImages.exterior[0].url;
+  // Actual floorplan image URL
+  const floorplanImage = "https://customer-assets.emergentagent.com/job_cinematic-villa/artifacts/d3i36xhm_floorplan-BSuvgVun.jpg";
 
   return (
     <section ref={ref} className="relative py-32 bg-charcoal-light overflow-hidden">
@@ -33,55 +32,47 @@ const FloorplanSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="glass-card p-8 md:p-12">
-            {/* Placeholder for floorplan */}
-            <div className="relative aspect-[16/10] bg-charcoal/50 flex items-center justify-center overflow-hidden">
-              {/* Grid pattern background */}
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: `
-                  linear-gradient(rgba(201,162,39,0.3) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(201,162,39,0.3) 1px, transparent 1px)
-                `,
-                backgroundSize: '40px 40px'
-              }} />
+          <div className="glass-card p-4 md:p-8">
+            {/* Floorplan Image */}
+            <motion.div 
+              className="relative overflow-hidden bg-charcoal"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                src={floorplanImage}
+                alt="Floorplan - 131 Grosvenor Avenue"
+                className="w-full h-auto"
+              />
               
-              {/* Placeholder content */}
-              <div className="relative z-10 text-center">
-                <motion.div
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="w-24 h-24 mx-auto mb-6 border-2 border-gold/50 rounded-lg flex items-center justify-center"
-                >
-                  <svg className="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </motion.div>
-                <h3 className="font-playfair text-2xl text-ivory mb-2">Floorplan – 131 Grosvenor</h3>
-                <p className="text-white/50 text-sm max-w-md mx-auto">
-                  {/* REPLACE: Add your floorplan image URL here */}
-                  Contact the listing agent for detailed floor plans of all three levels.
-                </p>
-              </div>
-            </div>
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+            </motion.div>
 
-            {/* Level indicators */}
-            <div className="flex justify-center gap-6 mt-8">
-              {['Main Level', 'Upper Level', 'Lower Level'].map((level, index) => (
-                <motion.div
-                  key={level}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-2"
-                >
-                  <span className="w-3 h-3 border border-gold/50" style={{
-                    backgroundColor: index === 0 ? 'rgba(201,162,39,0.3)' : 'transparent'
-                  }} />
-                  <span className="text-white/60 text-sm">{level}</span>
-                </motion.div>
-              ))}
+            {/* Caption */}
+            <div className="mt-6 text-center">
+              <p className="text-gold font-playfair text-lg">131 Grosvenor Avenue</p>
+              <p className="text-white/50 text-sm mt-1">3,587 sq ft · 3 Levels · 7 Bedrooms · 7 Bathrooms</p>
             </div>
           </div>
+        </motion.div>
+
+        {/* Level indicators */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex justify-center gap-8 mt-10"
+        >
+          {['Main Level', 'Upper Level', 'Lower Level'].map((level, index) => (
+            <div key={level} className="flex items-center gap-2">
+              <span 
+                className="w-3 h-3 border border-gold/50"
+                style={{ backgroundColor: index === 0 ? 'rgba(201,162,39,0.3)' : 'transparent' }}
+              />
+              <span className="text-white/60 text-sm">{level}</span>
+            </div>
+          ))}
         </motion.div>
 
         {/* Note */}
@@ -91,7 +82,6 @@ const FloorplanSection = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center text-white/40 text-sm mt-8"
         >
-          {/* REPLACE: Remove this note and add actual floorplan image */}
           Floor plans are for illustrative purposes only. Actual dimensions may vary.
         </motion.p>
       </div>
