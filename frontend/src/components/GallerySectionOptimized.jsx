@@ -186,7 +186,10 @@ const GallerySectionOptimized = () => {
           {categories.map((cat) => (
             <button
               key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
+              onClick={() => {
+                setActiveCategory(cat.key);
+                setShowAllPhotos(false);
+              }}
               className={`px-5 py-2 text-sm tracking-wider uppercase transition-all duration-300 ${
                 activeCategory === cat.key
                   ? 'bg-gold text-charcoal'
