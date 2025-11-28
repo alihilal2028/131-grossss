@@ -45,29 +45,64 @@ const DetailRow = ({ icon: Icon, label, value, index }) => (
   </motion.div>
 );
 
-// Feature category with stagger animation
+// Feature category with smooth stagger
+const featureListVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const featureItemVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  }
+};
+
 const FeatureCategory = ({ category, features, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+    viewport={{ once: true, margin: "-10%" }}
     className="space-y-4"
   >
     <motion.h4 
-      className="text-gold uppercase tracking-widest text-sm border-b border-gold/30 pb-2"
-      whileHover={{ letterSpacing: '0.2em' }}
+      className="text-gold uppercase tracking-widest text-sm border-b border-gold/30 pb-2 overflow-hidden"
+      whileHover={{ letterSpacing: '0.25em' }}
       transition={{ duration: 0.3 }}
     >
-      {category}
+      <motion.span
+        initial={{ y: "100%" }}
+        whileInView={{ y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="inline-block"
+      >
+        {category}
+      </motion.span>
     </motion.h4>
-    <ul className="space-y-2">
+    <motion.ul 
+      className="space-y-2"
+      variants={featureListVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-10%" }}
+    >
       {features.slice(0, 4).map((feature, i) => (
         <motion.li
           key={i}
-          initial={{ opacity: 0, x: 10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.1 + i * 0.05 }}
+          variants={featureItemVariants}
           viewport={{ once: true }}
           whileHover={{ x: 8 }}
           className="text-white/60 text-sm flex items-center gap-2 group cursor-default"
