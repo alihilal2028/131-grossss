@@ -149,24 +149,25 @@ const AboutSectionEnhanced = () => {
 
           {/* Content Side */}
           <div>
-            {/* Feature Icons with stagger */}
+            {/* Feature Icons with sequential left-to-right fade-in */}
             <motion.div 
               className="flex gap-6 mb-8"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={{
-                visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
+                visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
               }}
             >
               {featureIcons.map((item, index) => (
                 <motion.div
                   key={item.label}
                   variants={{
-                    hidden: { opacity: 0, y: 20, scale: 0.8 },
-                    visible: { opacity: 1, y: 0, scale: 1 }
+                    hidden: { opacity: 0, x: -20, scale: 0.8 },
+                    visible: { opacity: 1, x: 0, scale: 1 }
                   }}
                   whileHover={{ y: -5, scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
                   className="flex flex-col items-center gap-2 cursor-default"
                   data-cursor-hover
                 >
