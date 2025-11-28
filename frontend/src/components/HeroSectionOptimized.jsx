@@ -144,23 +144,27 @@ const HeroSectionOptimized = () => {
             {propertyData.beds} beds, {propertyData.baths} baths, {propertyData.sqftFormatted}.
           </motion.p>
           
-          {/* CTA Button with 3D lift */}
+          {/* Magnetic Spring Button */}
           <motion.button
-            initial={{ opacity: 0, y: 30, z: -80 }}
-            animate={{ opacity: 1, y: 0, z: 0 }}
-            transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ 
-              scale: 1.05, 
-              z: 50,
-              rotateX: -5,
-              boxShadow: '0 20px 60px rgba(201,162,39,0.4)'
+              scale: 1.05,
+              transition: { type: "spring", stiffness: 400, damping: 10 }
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ 
+              scale: 0.95,
+              transition: { type: "spring", stiffness: 400, damping: 10 }
+            }}
             onClick={handleBooking}
-            style={{ transformStyle: 'preserve-3d', translateZ: 40 }}
-            className="inline-flex items-center gap-3 px-10 py-4 bg-gold text-charcoal font-medium tracking-wider uppercase rounded-full hover:bg-gold-light transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-gold text-charcoal font-medium tracking-wider uppercase rounded-full cursor-pointer"
           >
-            <span className="w-2 h-2 bg-charcoal rounded-full animate-pulse" />
+            <motion.span 
+              className="w-2 h-2 bg-charcoal rounded-full"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
             Book a Private Viewing
           </motion.button>
         </div>
