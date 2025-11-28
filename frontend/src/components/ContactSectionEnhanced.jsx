@@ -433,15 +433,15 @@ const ContactSectionEnhanced = () => {
               {/* Google Maps Embed */}
               <div className="relative w-full h-[500px] bg-charcoal-light">
                 <iframe
-                  title="Property Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.0757468!2d-122.9866!3d49.2388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548676c3c3c3c3c3%3A0x0!2s131%20Grosvenor%20Avenue%2C%20Burnaby%2C%20BC!5e0!3m2!1sen!2sca!4v1234567890"
+                  title="Property Location - 131 Grosvenor Avenue, Burnaby"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.8!2d-122.9886!3d49.2388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486779e3e0e0e0e%3A0x0!2s131%20Grosvenor%20Ave%2C%20Burnaby%2C%20BC%20V5C%206R6!5e0!3m2!1sen!2sca!4v1620000000000!5m2!1sen!2sca"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="grayscale contrast-125 brightness-90"
+                  className="grayscale-[30%] contrast-110 brightness-95 saturate-[1.2]"
                 />
                 
                 {/* Gold overlay gradient */}
