@@ -30,7 +30,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              A cinematic view residence in Burnaby's prestigious Capitol Hill neighborhood. 
+              A cinematic view residence in Burnaby&apos;s prestigious Capitol Hill neighborhood. 
               Where architectural excellence meets panoramic beauty.
             </p>
           </div>
