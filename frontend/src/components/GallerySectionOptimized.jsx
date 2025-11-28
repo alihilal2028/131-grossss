@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { allImages, propertyImages } from '../data/propertyData';
 
-// Simplified Gallery Card without heavy 3D transforms
+// Enhanced Gallery Card with stagger and hover effects
 const GalleryCard = ({ image, index, onClick }) => {
   return (
     <motion.div
@@ -11,16 +11,18 @@ const GalleryCard = ({ image, index, onClick }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      whileHover={{ y: -6 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      whileHover={{ y: -6, scale: 1.02 }}
       onClick={onClick}
       className="relative aspect-[4/3] overflow-hidden cursor-pointer group"
     >
-      <img
+      <motion.img
         src={image.url}
         alt={image.alt}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover"
         loading="lazy"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.5 }}
       />
       
       {/* Hover overlay */}
