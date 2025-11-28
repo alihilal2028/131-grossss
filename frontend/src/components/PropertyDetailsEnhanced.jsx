@@ -255,8 +255,8 @@ const PropertyDetailsEnhanced = () => {
 
                 {/* CTA Button */}
                 <MagneticButton
-                  onClick={scrollToContact}
-                  className="w-full py-4 bg-gold text-charcoal font-medium tracking-wider uppercase transition-all duration-500 hover:shadow-[0_0_40px_rgba(201,162,39,0.3)]"
+                  onClick={handleBooking}
+                  className="w-full py-4 bg-gold text-charcoal font-medium tracking-wider uppercase transition-all duration-500 hover:shadow-[0_0_40px_rgba(201,162,39,0.3)] cursor-pointer"
                   strength={0.1}
                 >
                   Book a Private Viewing
