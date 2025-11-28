@@ -102,8 +102,8 @@ const HeroSectionOptimized = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
-            onClick={scrollToContact}
-            className="inline-flex items-center gap-3 px-10 py-4 bg-gold text-charcoal font-medium tracking-wider uppercase rounded-full hover:bg-gold-light hover:shadow-[0_0_40px_rgba(201,162,39,0.3)] transition-all duration-300"
+            onClick={handleBooking}
+            className="inline-flex items-center gap-3 px-10 py-4 bg-gold text-charcoal font-medium tracking-wider uppercase rounded-full hover:bg-gold-light hover:shadow-[0_0_40px_rgba(201,162,39,0.3)] transition-all duration-300 cursor-pointer"
           >
             <span className="w-2 h-2 bg-charcoal rounded-full animate-pulse" />
             Book a Private Viewing
