@@ -37,34 +37,27 @@ const GalleryCard = ({ image, index, onClick }) => {
         whileHover={{ scale: 1.05 }}
       />
       
-      {/* 3D Layered overlay */}
-      <motion.div 
-        className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300"
-        style={{ translateZ: 20 }}
-      />
+      {/* Hover overlay */}
+      <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300" />
       
-      {/* Border with depth */}
-      <motion.div 
-        className="absolute inset-0 border border-white/0 group-hover:border-gold/40 transition-colors duration-300"
-        style={{ translateZ: 30 }}
-      />
+      {/* Border */}
+      <div className="absolute inset-0 border border-white/0 group-hover:border-gold/40 transition-colors duration-300" />
       
-      {/* View icon with 3D pop */}
+      {/* View icon */}
       <motion.div 
-        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-charcoal/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ translateZ: 50 }}
-        whileHover={{ scale: 1.2, rotateZ: 90 }}
+        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-charcoal/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100"
+        whileHover={{ 
+          scale: 1.15,
+          transition: { type: "spring", stiffness: 400, damping: 10 }
+        }}
       >
         <Maximize2 className="w-4 h-4 text-gold" />
       </motion.div>
       
-      {/* Caption with 3D slide */}
-      <motion.div 
-        className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300"
-        style={{ translateZ: 40 }}
-      >
+      {/* Caption */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
         <p className="text-ivory text-sm">{image.alt}</p>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
