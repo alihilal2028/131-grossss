@@ -158,6 +158,17 @@ const FooterEnhanced = () => {
               >
                 <Linkedin className="w-4 h-4 text-white/50 group-hover:text-gold transition-colors" />
               </motion.a>
+              <motion.a
+                href={propertyData.agent.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -4, scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 border border-white/10 flex items-center justify-center hover:border-gold/50 hover:bg-gold/10 transition-all duration-300 group"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-4 h-4 text-white/50 group-hover:text-gold transition-colors" />
+              </motion.a>
             </div>
           </motion.div>
         </div>
