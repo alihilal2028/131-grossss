@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Bed, Bath, Square, MapPin } from 'lucide-react';
-import Hero3DOptimized from './Hero3DOptimized';
 import { propertyData } from '../data/propertyData';
 
 const HeroSectionOptimized = () => {
@@ -13,6 +12,7 @@ const HeroSectionOptimized = () => {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 300]);
 
   const stats = [
     { icon: Bed, value: propertyData.beds, label: 'Bedrooms' },
@@ -34,8 +34,28 @@ const HeroSectionOptimized = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal"
     >
-      {/* 3D Background */}
-      <Hero3DOptimized />
+      {/* Background Image with Parallax */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{ y: imageY }}
+      >
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://customer-assets.emergentagent.com/job_e55041c4-a02d-49a5-9e45-335dbf008023/artifacts/dqu7yl9h_official%20exterior.png)',
+            transform: 'scale(1.1)'
+          }}
+        />
+        
+        {/* Overlays for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/50 via-transparent to-charcoal/50 pointer-events-none" />
+        
+        {/* Vignette */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 100%)'
+        }} />
+      </motion.div>
       
       {/* Content */}
       <motion.div 
