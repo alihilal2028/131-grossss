@@ -127,13 +127,21 @@ const HeroSectionOptimized = () => {
             {propertyData.beds} beds, {propertyData.baths} baths, {propertyData.sqftFormatted}.
           </motion.p>
           
-          {/* CTA Button */}
+          {/* CTA Button with 3D lift */}
           <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            initial={{ opacity: 0, y: 30, z: -80 }}
+            animate={{ opacity: 1, y: 0, z: 0 }}
+            transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ 
+              scale: 1.05, 
+              z: 50,
+              rotateX: -5,
+              boxShadow: '0 20px 60px rgba(201,162,39,0.4)'
+            }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleBooking}
-            className="inline-flex items-center gap-3 px-10 py-4 bg-gold text-charcoal font-medium tracking-wider uppercase rounded-full hover:bg-gold-light hover:shadow-[0_0_40px_rgba(201,162,39,0.3)] transition-all duration-300 cursor-pointer"
+            style={{ transformStyle: 'preserve-3d', translateZ: 40 }}
+            className="inline-flex items-center gap-3 px-10 py-4 bg-gold text-charcoal font-medium tracking-wider uppercase rounded-full hover:bg-gold-light transition-all duration-300 cursor-pointer"
           >
             <span className="w-2 h-2 bg-charcoal rounded-full animate-pulse" />
             Book a Private Viewing
