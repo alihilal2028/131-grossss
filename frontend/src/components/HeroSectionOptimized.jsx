@@ -34,29 +34,49 @@ const HeroSectionOptimized = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal"
     >
-      {/* Background Image with Parallax */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ y: imageY }}
-      >
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(https://customer-assets.emergentagent.com/job_image-showcase-71/artifacts/gg7w7vuh_Gemini_Generated_Image_qh7cwcqh7cwcqh7c.png)',
-            transform: 'scale(1.1)',
-            imageRendering: 'high-quality'
+      {/* 3D Background Image with Layered Parallax */}
+      <div className="absolute inset-0 z-0" style={{ perspective: '1000px' }}>
+        <motion.div 
+          className="absolute inset-0"
+          style={{ 
+            y: imageY,
+            scale: imageScale,
+            rotateX: imageRotateX,
+            transformStyle: 'preserve-3d'
           }}
-        />
-        
-        {/* Overlays for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/50 via-transparent to-charcoal/50 pointer-events-none" />
-        
-        {/* Vignette */}
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 100%)'
-        }} />
-      </motion.div>
+        >
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url(https://customer-assets.emergentagent.com/job_image-showcase-71/artifacts/gg7w7vuh_Gemini_Generated_Image_qh7cwcqh7cwcqh7c.png)',
+              transform: 'scale(1.1)',
+              imageRendering: 'high-quality'
+            }}
+          />
+          
+          {/* Layered overlays with different depths */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal pointer-events-none" 
+            style={{ 
+              z: useTransform(scrollYProgress, [0, 1], [10, 50]),
+              translateZ: 20
+            }}
+          />
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-charcoal/50 via-transparent to-charcoal/50 pointer-events-none"
+            style={{ translateZ: 30 }}
+          />
+          
+          {/* 3D Vignette */}
+          <motion.div 
+            className="absolute inset-0 pointer-events-none" 
+            style={{
+              background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 100%)',
+              translateZ: 40
+            }}
+          />
+        </motion.div>
+      </div>
       
       {/* Content */}
       <motion.div 
