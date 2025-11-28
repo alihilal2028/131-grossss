@@ -3,17 +3,32 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { allImages, propertyImages } from '../data/propertyData';
 
-// Enhanced Gallery Card with stagger and hover effects
+// 3D Gallery Card with depth and hover effects
 const GalleryCard = ({ image, index, onClick }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      whileHover={{ y: -6, scale: 1.02 }}
+      initial={{ opacity: 0, y: 50, rotateX: 20, z: -100 }}
+      animate={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
+      exit={{ opacity: 0, scale: 0.95, rotateY: -20 }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1]
+      }}
+      whileHover={{ 
+        y: -12, 
+        scale: 1.03,
+        z: 100,
+        rotateX: -3,
+        rotateY: 2,
+        boxShadow: '0 30px 60px rgba(0,0,0,0.5)'
+      }}
       onClick={onClick}
+      style={{ 
+        transformStyle: 'preserve-3d',
+        perspective: '1000px'
+      }}
       className="relative aspect-[4/3] overflow-hidden cursor-pointer group"
     >
       <motion.img
@@ -21,25 +36,39 @@ const GalleryCard = ({ image, index, onClick }) => {
         alt={image.alt}
         className="w-full h-full object-cover"
         loading="lazy"
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.5 }}
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.6 }}
+        style={{ transformStyle: 'preserve-3d' }}
       />
       
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300" />
+      {/* 3D Layered overlay */}
+      <motion.div 
+        className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300"
+        style={{ translateZ: 20 }}
+      />
       
-      {/* Border */}
-      <div className="absolute inset-0 border border-white/0 group-hover:border-gold/40 transition-colors duration-300" />
+      {/* Border with depth */}
+      <motion.div 
+        className="absolute inset-0 border border-white/0 group-hover:border-gold/40 transition-colors duration-300"
+        style={{ translateZ: 30 }}
+      />
       
-      {/* View icon */}
-      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-charcoal/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      {/* View icon with 3D pop */}
+      <motion.div 
+        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-charcoal/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ translateZ: 50 }}
+        whileHover={{ scale: 1.2, rotateZ: 90 }}
+      >
         <Maximize2 className="w-4 h-4 text-gold" />
-      </div>
+      </motion.div>
       
-      {/* Caption */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+      {/* Caption with 3D slide */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+        style={{ translateZ: 40 }}
+      >
         <p className="text-ivory text-sm">{image.alt}</p>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
