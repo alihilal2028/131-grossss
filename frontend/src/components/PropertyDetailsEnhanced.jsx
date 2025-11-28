@@ -7,15 +7,33 @@ import { FadeInOnScroll, ParallaxSection } from './ScrollAnimations';
 import MagneticButton from './MagneticButton';
 import { propertyData, propertyImages } from '../data/propertyData';
 
-// Animated detail row
+// Staggered detail row with variants
+const detailVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  })
+};
+
 const DetailRow = ({ icon: Icon, label, value, index }) => (
   <motion.div
-    initial={{ opacity: 0, x: 20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.05 }}
-    viewport={{ once: true }}
-    whileHover={{ x: 4, backgroundColor: 'rgba(201,162,39,0.05)' }}
-    className="flex items-center justify-between py-3 px-2 -mx-2 border-b border-white/5 transition-colors duration-300 cursor-default group"
+    custom={index}
+    variants={detailVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-10%" }}
+    whileHover={{ 
+      x: 8,
+      backgroundColor: 'rgba(201,162,39,0.05)',
+      transition: { type: "spring", stiffness: 400, damping: 25 }
+    }}
+    className="flex items-center justify-between py-3 px-2 -mx-2 border-b border-white/5 cursor-default group"
   >
     <div className="flex items-center gap-3">
       <Icon className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
