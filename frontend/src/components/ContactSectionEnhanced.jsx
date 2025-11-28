@@ -288,17 +288,25 @@ const ContactSectionEnhanced = () => {
           />
         </FadeInOnScroll>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Contact Form */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center" style={{ perspective: '1500px' }}>
+          {/* Contact Form with 3D */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: -50, rotateY: -10, z: -80 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0, z: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
+            style={{ transformStyle: 'preserve-3d' }}
           >
             <motion.div 
-              className="glass-card p-8 md:p-10 relative overflow-hidden"
-              whileHover={{ boxShadow: '0 0 60px rgba(201,162,39,0.1)' }}
+              className="glass-card p-8 md:p-10 relative overflow-visible"
+              whileHover={{ 
+                boxShadow: '0 25px 60px rgba(201,162,39,0.2)',
+                z: 50,
+                scale: 1.02,
+                rotateY: 2
+              }}
+              transition={{ duration: 0.5 }}
+              style={{ transformStyle: 'preserve-3d' }}
             >
               {/* Decorative corner */}
               <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-gold/20" />
