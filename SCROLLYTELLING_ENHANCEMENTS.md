@@ -239,12 +239,38 @@ const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 4. `/src/components/GallerySectionOptimized.jsx` - Stagger grid and hover effects
 5. `/src/components/AboutSectionEnhanced.jsx` - Sequential icon animations
 
+## 3D Technical Features
+
+### Core 3D Techniques Used:
+1. **Perspective**: `perspective: 1000px - 2000px` on containers
+2. **Transform Style**: `transformStyle: preserve-3d` throughout
+3. **Z-Axis Animations**: `-100px to +100px` depth range
+4. **Rotation**: `rotateX`, `rotateY`, `rotateZ` for 3D spins
+5. **Layered Depths**: Multiple elements at different `translateZ` values
+6. **Easing**: Custom cubic-bezier `[0.22, 1, 0.36, 1]` for smooth motion
+
+### 3D Transform Properties:
+- **translateZ**: Depth positioning (z-axis)
+- **rotateX**: Pitch (horizontal axis rotation)
+- **rotateY**: Yaw (vertical axis rotation)  
+- **rotateZ**: Roll (depth axis rotation)
+- **scale**: Size transformation
+- **perspective**: Viewing distance
+
+### Contact Section 3D
+- **Form Card**: 
+  - Initial: `x: -50, rotateY: -10, z: -80`
+  - Hover: `z: 50, rotateY: 2, scale: 1.02`
+  - Shadow: `0 25px 60px rgba(201,162,39,0.2)`
+- **Perspective**: 1500px container
+
 ## Design Preservation
 
 ✅ **No visual changes**: Colors, typography, spacing remain identical
-✅ **Only animation logic**: Added motion and interaction
-✅ **Performance optimized**: Smooth 60fps animations
+✅ **Only 3D animation logic**: Added depth, perspective, and z-axis motion
+✅ **Performance optimized**: GPU-accelerated 3D transforms, smooth 60fps
 ✅ **Accessibility maintained**: Respects prefers-reduced-motion
+✅ **Hardware acceleration**: All transforms use GPU compositing
 
 ## Testing Checklist
 
