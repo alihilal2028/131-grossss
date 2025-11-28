@@ -74,7 +74,7 @@ const AboutSectionEnhanced = () => {
       
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header with reveal animation */}
-        <FadeInOnScroll className="text-center mb-20">
+        <FadeIn className="text-center mb-20">
           <motion.p 
             className="text-gold tracking-[0.3em] text-sm uppercase mb-4"
             initial={{ opacity: 0, letterSpacing: '0.1em' }}
@@ -94,7 +94,7 @@ const AboutSectionEnhanced = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
           />
-        </FadeInOnScroll>
+        </FadeIn>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image Side with parallax and tilt */}
